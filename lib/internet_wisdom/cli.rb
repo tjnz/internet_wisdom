@@ -41,7 +41,7 @@ class InternetWisdom::CLI
 			get_wisdom
 		else
 			puts "Invalid entry, try again"
-			list_sites
+			filter_sites
 		end
 	end
 	

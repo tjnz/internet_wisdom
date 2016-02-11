@@ -1,6 +1,6 @@
 class InternetWisdom::Site
 	
-	attr_accessor :name, :posts, :is_random, :refresh_method
+	attr_accessor :name, :posts, :is_random, :refresh_method, :page_index
 	attr_reader :cur_index
 	
 	def initialize(name, israndom=false)
@@ -18,7 +18,7 @@ class InternetWisdom::Site
 	end
 	
 	def refresh!
-		puts "#{name} refreshing!"
+		puts "#{name} is refreshing!"
 		refresh_method.call(self)
 		@cur_index = 0
 		self

@@ -4,7 +4,6 @@ class InternetWisdom::SiteManager
 	
 	def initialize
 		@sites = []
-		puts "NEW MANAGER"
 		#debug_scrape
 		create_sites
 	end
@@ -17,11 +16,13 @@ class InternetWisdom::SiteManager
 	end
 	
 	def create_sites
-		sites << create_funtweets
+		@sites = [
+			create_funtweets,
+			create_brainy_quote
+			] 
 	end
 	
 	def create_funtweets
-		puts "create_funtweets"
 		funtweets = InternetWisdom::Site.new("FunTweets.com", true)
 		funtweets.refresh_method = Proc.new do |site|
 			doc = Nokogiri::HTML(open("http://funtweets.com/random"))
@@ -38,8 +39,23 @@ class InternetWisdom::SiteManager
 		funtweets.refresh!
 	end
 	
-	def create_cool_funny_quotes
+	def create_brainy_quote
+		brainy = InternetWisdom::Site.new("BrainyQuotes.com", true)
+		brainy.refresh_method = Proc.new do |site|
+			site.page_index = (1..39).to_a.sample
+			doc = Nokogiri::HTML(open("http://www.brainyquote.com/quotes/topics/topic_funny#{site.page_index}.html"))
+			site.posts = doc.search(".masonryitem").collect do |quote|
+				h = {
+					:author => quote.search("div.bq-aut a").text,
+					:text => quote.search("span.bqQuoteLink a").text,
+					:link => "http://www.brainyquote.com#{quote.search("div.bq-aut a").attribute("href").value}"
+				}
+				InternetWisdom::Post.new(h)
+			end
+		end
+		brainy.refresh!
 	end
+	
 	
 	def refresh_site(site)
 		site.refresh! 

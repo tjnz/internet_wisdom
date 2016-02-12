@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+require "bundler/setup"
 require "internet_wisdom"
 
 InternetWisdom::CLI.new.call

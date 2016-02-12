@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'internet_wisdom'
+gem 'internet-wisdom'
 ```
 
 And then execute:
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install internet_wisdom
+    $ gem install internet-wisdom
 
 ## Usage
 

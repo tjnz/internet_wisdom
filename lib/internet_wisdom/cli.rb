@@ -1,10 +1,11 @@
 class InternetWisdom::CLI
 	
 	BORDER = "~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+	WELCOME = "\nWELCOME TO INTERNET WISDOM!!!"
 	INSTRUCTIONS = %q(
 	Hotkeys:
 	 h - help
-	 f - follow the author
+	 f - follow the author on the web
 	 x - filter posts from a specific site
 	 [Enter] - get a new post
 	 q - quit
@@ -13,7 +14,7 @@ class InternetWisdom::CLI
 	attr_reader :manager, :current_post, :cur_site, :cur_site_index
 	
 	def call
-		puts "\nWELCOME TO INTERNET WISDOM!!!"
+		puts WELCOME
 		puts INSTRUCTIONS
 		
 		@manager = InternetWisdom::SiteManager.new
@@ -70,11 +71,12 @@ class InternetWisdom::CLI
 				puts "Command not recognized, type 'h' for instructions" if input != "q"
 			end
 		end
-		puts "Goodbye"
+		puts "\n\nGoodbye!!"
 		exit
 	end
 	
 	def display_instructions
+		puts WELCOME
 		puts INSTRUCTIONS
 		get_input
 	end

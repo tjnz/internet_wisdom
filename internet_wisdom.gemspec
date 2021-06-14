@@ -19,14 +19,15 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib", "lib/internet_wisdom"]
   spec.required_ruby_version = '>= 1.9.2'
 
-  spec.add_development_dependency "bundler", "~> 1.11"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "bundler", ">= 2.2.10"
+  spec.add_development_dependency "rake", ">= 12.3.3"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry",  "~> 0"
   
   spec.add_dependency "launchy", "~> 2.4", ">=2.4.3"
   spec.add_dependency "nokogiri", "~> 1.6", ">= 1.6.7.2"
   spec.add_dependency 'require_all', '~> 1.3', '>= 1.3.3'
+  spec.add_dependency "bundler", ">= 2.2.10"
 
   
 end
